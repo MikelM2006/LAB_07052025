@@ -4,5 +4,6 @@ public interface ContenidoDescargable {
 
     double descargar();
     void verificarEspacioRequerido();
-
+    double calcularPuntuacion();
 }
+

@@ -8,7 +8,7 @@ public abstract class ContenidoMultimedia implements ContenidoReproducible{
     private int vecesReproducido;
     private boolean esFavorito;
 
-    //constructor
+    //constructores
     public ContenidoMultimedia(String titulo, String genero, int duracion, int vecesReproducido, boolean esFavorito) {
         this.titulo = titulo;
         this.genero = genero;
@@ -17,34 +17,57 @@ public abstract class ContenidoMultimedia implements ContenidoReproducible{
         this.esFavorito = esFavorito;
     }
 
+    public ContenidoMultimedia(String titulo, String genero, int duracion) {
+        this.titulo = titulo;
+        this.genero = genero;
+        this.duracion = duracion;
+        this.vecesReproducido = 0;
+        this.esFavorito = false;
+    }
+
     //Implements methods
     @Override
     public void reproducir() {
-
+        vecesReproducido++;
+        System.out.println("Reproduciendo: " + titulo);
     }
 
     @Override
     public void pausar() {
-
+        System.out.println("Pausado");
     }
 
     @Override
     public int obtenerDuracion() {
-        return 0;
+        return duracion;
     }
 
     @Override
     public String obtenerTitulo() {
-        return "";
+        return titulo;
     }
 
     @Override
     public String obtenerGenero() {
-        return "";
+        return genero;
     }
 
     @Override
     public boolean esFavorito() {
-        return false;
+        return esFavorito;
     }
+
+
+    //setters
+    public void setEsFavorito(boolean esFavorito) {
+        this.esFavorito = esFavorito;
+    }
+
+    //solo los hijos lo van a ver
+    protected void registrarInteraccion(){
+        System.out.println("Interaccion Registrada: " + titulo + genero);
+        System.out.println("Fue reproducida un total de: " + vecesReproducido + " veces");
+    }
+
+    
 }
